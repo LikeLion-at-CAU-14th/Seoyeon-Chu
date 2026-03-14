@@ -13,6 +13,12 @@ Frontend Developer | CAU Student
 ### 🛠 Tech Stack
 HTML | CSS | Python | React | C++ | Maya
 
+## 📊 GitHub Stats
+![GitHub stats](https://github-readme-stats.vercel.app/api?username=cntjdus&show_icons=true&theme=tokyonight)
+
+## 📈 Top Languages
+![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=cntjdus&layout=compact&theme=tokyonight)
+
 ### 📫 Contact
 Phone: 010-8946-6046
 Email: smonstacy@cau.ac.kr
