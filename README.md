@@ -19,6 +19,9 @@ HTML | CSS | Python | React | C++ | Maya
 ## 📈 Top Languages
 ![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=cntjdus&layout=compact&theme=gruvbox)
 
+## Visitor Count
+![Visitor Count](https://komarev.com/ghpvc/?username=cntjdus&color=blue)
+
 ### 📫 Contact
 Phone: 010-8946-6046
 Email: smonstacy@cau.ac.kr
