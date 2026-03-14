@@ -17,11 +17,11 @@ HTML | CSS | Python | React | C++ | Maya
 
 
 ## 📊 GitHub Activity
-![GitHub Activity Graph](https://github-readme-activity-graph.vercel.app/graph?username=cntjdus&theme=gruvbox)
+![GitHub Activity Graph](https://github-readme-activity-graph.vercel.app/graph?username=cntjdus&theme=tokyo-night)
 
 
 ## 📈 Top Languages
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=cntjdus&layout=compact&theme=gruvbox)
+![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=cntjdus&layout=compact&theme=tokyo-night)
 
 
 ### 📫 Contact
