@@ -5,22 +5,24 @@
 Frontend Developer | CAU Student
 </p>
 
+
 ### 🌱 Currently Learning
 - React
 - JavaScript / TypeScript
 - Web Frontend Development
 
+
 ### 🛠 Tech Stack
 HTML | CSS | Python | React | C++ | Maya
+
 
 ## 📊 GitHub Activity
 ![GitHub Activity Graph](https://github-readme-activity-graph.vercel.app/graph?username=cntjdus&theme=gruvbox)
 
+
 ## 📈 Top Languages
 ![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=cntjdus&layout=compact&theme=gruvbox)
 
-## Visitor Count
-![Visitor Count](https://komarev.com/ghpvc/?username=cntjdus&color=blue)
 
 ### 📫 Contact
 Phone: 010-8946-6046
