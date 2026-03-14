@@ -1,4 +1,4 @@
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:89f7fe,100:66a6ff&height=200&section=header&text=Seoyeon%20Chu&fontSize=40" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:667eea,100:764ba2&height=220&section=header&text=Seoyeon%20Chu&fontSize=40&fontAlignY=40&desc=Frontend%20Developer%20%7C%20CAU%20Student&descAlignY=60"/>
 <h1 align="center">Hi 👋 I'm Seoyeon</h1>
 
 <p align="center">
