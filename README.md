@@ -25,7 +25,7 @@ HTML | CSS | Python | React | C++ | Maya
 
 
 ### 📫 Contact
-Phone: 010-8946-6046
-Email: smonstacy@cau.ac.kr
-Instagram: cn_tjdus
-Github: cntjdus
+- Phone: 010-8946-6046
+- Email: smonstacy@cau.ac.kr
+- Instagram: cn_tjdus
+- Github: cntjdus
