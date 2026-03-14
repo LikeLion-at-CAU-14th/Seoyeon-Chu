@@ -14,10 +14,10 @@ Frontend Developer | CAU Student
 HTML | CSS | Python | React | C++ | Maya
 
 ## 📊 GitHub Activity
-![GitHub Activity Graph](https://github-readme-activity-graph.vercel.app/graph?username=cntjdus&theme=tokyo-night)
+![GitHub Activity Graph](https://github-readme-activity-graph.vercel.app/graph?username=cntjdus&theme=radical)
 
 ## 📈 Top Languages
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=cntjdus&layout=compact&theme=tokyonight)
+![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=cntjdus&layout=compact&theme=radical)
 
 ### 📫 Contact
 Phone: 010-8946-6046
