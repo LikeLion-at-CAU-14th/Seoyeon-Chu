@@ -1,7 +1,8 @@
+/* main 페이지 */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #dbe8f7;
+    background: linear-gradient(135deg, #d6e6fb, #7eaee6);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -94,7 +95,7 @@ nav a:hover {
     transform: translateY(-2px);
 }
 
-/* 📸 photo page */
+/* photo 페이지 */
 .photo-container {
     display: flex;
     justify-content: center;
@@ -113,7 +114,7 @@ nav a:hover {
     border-radius: 20px;
 }
 
-/* 👤 about page */
+/* about me 페이지 */
 .about-container {
     display: flex;
     flex-direction: column;
@@ -123,7 +124,8 @@ nav a:hover {
 }
 
 .intro {
-    font-size: 22px;
+    font-size: 35px;
+    font-weight: bold;
     color: #444;
 }
 
