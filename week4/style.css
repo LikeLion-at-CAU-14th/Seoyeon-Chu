@@ -19,7 +19,7 @@ body {
   padding: 36px 24px;
 }
 
-/* 회원가입 카드 */
+/* 회원가입 전체 */
 .signup-card {
   width: 100%;
   max-width: 720px;
@@ -40,7 +40,7 @@ body {
   margin-bottom: 72px;
 }
 
-/* logo */
+/* 멋사 로고 */
 .logo {
   width: 58px;
   height: 29px;
@@ -58,13 +58,13 @@ body {
   letter-spacing: -0.02em;
 }
 
-/* 폼 전체 */
+/* 입력 부분 전체 */
 .signup-form {
   display: flex;
   flex-direction: column;
 }
 
-/* 입력 그룹 */
+/* 정보 입력 부분 */
 .form-group {
   margin-bottom: 28px;
 }
@@ -113,7 +113,7 @@ body {
 .radio-item input[type="radio"] {
   width: 22px;
   height: 22px;
-  accent-color: #d2d2d2;
+  accent-color: #ebebeb;
   cursor: pointer;
 }
 
