@@ -5,13 +5,19 @@ const myHandIcon = document.getElementById("my-hand-icon");
 const computerText = document.getElementById("computer-hand-text");
 const computerIcon = document.getElementById("computer-hand-icon");
 
+// 가위, 바위, 보 버튼
 const rockBtn = document.getElementById("rock");
 const scissorsBtn = document.getElementById("scissors");
 const paperBtn = document.getElementById("paper");
 
+// 점수 표시
 const myScore = document.querySelector(".my-score");
 const computerScore = document.querySelector(".computer-score");
+
+// 결과
 const displayResult = document.getElementById("display-result");
+
+// reset 버튼
 const resetButton = document.getElementById("reset-button");
 
 // 점수 변수
@@ -76,13 +82,13 @@ function updateScore(result) {
   if (result === "win") {
     myScoreCount++;
     myScore.innerText = myScoreCount;
-    displayResult.innerText = "WIN!";
+    displayResult.innerText = "승~";
   } else if (result === "lose") {
     computerScoreCount++;
     computerScore.innerText = computerScoreCount;
-    displayResult.innerText = "LOSE!";
+    displayResult.innerText = "패ㅋㅋ";
   } else {
-    displayResult.innerText = "DRAW!";
+    displayResult.innerText = "무승부;;";
   }
 }
 
