@@ -9,10 +9,20 @@ const rockBtn = document.getElementById("rock");
 const scissorsBtn = document.getElementById("scissors");
 const paperBtn = document.getElementById("paper");
 
+const myScore = document.querySelector(".my-score");
+const computerScore = document.querySelector(".computer-score");
+const displayResult = document.getElementById("display-result");
+const resetButton = document.getElementById("reset-button");
+
+// 점수 변수
+let myScoreCount = 0;
+let computerScoreCount = 0;
+
 // 2. 이벤트 설정
 rockBtn.addEventListener("click", displayMyChoice); 
 scissorsBtn.addEventListener("click", displayMyChoice);
 paperBtn.addEventListener("click", displayMyChoice);
+resetButton.addEventListener("click", resetGame);
 
 // 3. displayMyChoice 함수 설정
 function displayMyChoice(e) {
@@ -44,8 +54,66 @@ function displayComChoice(result) {
     computerIcon.className = result[1];
 }
 
+// 5-1. 승패 판정 함수
+function getResult(myChoice, comChoice) {
+  if (myChoice === comChoice) {
+    return "draw";
+  }
+
+  if (
+    (myChoice === "rock" && comChoice === "scissors") ||
+    (myChoice === "scissors" && comChoice === "paper") ||
+    (myChoice === "paper" && comChoice === "rock")
+  ) {
+    return "win";
+  }
+
+  return "lose";
+}
+
+// 5-2. 점수 업데이트 함수
+function updateScore(result) {
+  if (result === "win") {
+    myScoreCount++;
+    myScore.innerText = myScoreCount;
+    displayResult.innerText = "WIN!";
+  } else if (result === "lose") {
+    computerScoreCount++;
+    computerScore.innerText = computerScoreCount;
+    displayResult.innerText = "LOSE!";
+  } else {
+    displayResult.innerText = "DRAW!";
+  }
+}
+
 // 6. start 함수
 function start(mychoice) {
     let resultArray = getComChoice();
-    displayComChoice(resultArray);
+    displayComChoice(resultArray); 
+
+// 6-1. 승패 판정 및 점수 반영
+    let result = getResult(mychoice, resultArray[0]);
+    updateScore(result);
 }  
+
+// 7. reset 함수
+function resetGame() {
+  myScoreCount = 0;
+  computerScoreCount = 0;
+
+  myScore.innerText = 0;
+  computerScore.innerText = 0;
+
+  myHandText.innerText = "";
+  computerText.innerText = "";
+  myHandIcon.className = "icon";
+  computerIcon.className = "icon";
+  displayResult.innerText = "";
+}
+
+// 7. 다크모드 버튼 구현
+const darkModeButton = document.getElementById("darkmode-button");
+
+darkModeButton.addEventListener("click", () => {
+  document.body.classList.toggle("dark-mode");
+});

@@ -81,6 +81,8 @@ button {
 #display-result {
     flex-basis: 20%;
     text-align: center;
+    font-size: 32px;
+    font-weight: bold;
 }
 
 #display-title {
@@ -156,4 +158,32 @@ button {
 
 .title {
   border-bottom: black solid 3px;
+}
+
+/* 다크모드 */
+#darkmode-button {
+  margin-left: 10px;
+}
+
+body.dark-mode {
+  background-color: #121212;
+  color: white;
+}
+
+body.dark-mode .contents {
+  border: white solid 4px;
+}
+
+body.dark-mode .fa-regular {
+  border: white 4px solid;
+}
+
+body.dark-mode .title {
+  border-bottom: white solid 3px;
+}
+
+body.dark-mode .change-reverse {
+  border: white solid 2px;
+  background-color: white;
+  color: black;
 }
