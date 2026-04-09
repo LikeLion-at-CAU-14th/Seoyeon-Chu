@@ -108,7 +108,6 @@ button:active {
     color: #adb5bd;
 }
 
-
 .complete-btn, .del-btn {
     width: 32px;
     height: 32px;
@@ -116,6 +115,13 @@ button:active {
     justify-content: center;
     align-items: center;
     padding: 0;
+}
+
+.complete-btn img,
+.del-btn img {
+    width: 18px;
+    height: 18px;
+    pointer-events: none;
 }
 
 .complete-btn {
@@ -136,7 +142,22 @@ button:active {
 .done-btn {
     background-color: #dee2e6; 
     color: #868e96; 
+}
 
+.bottom-btn-box {
+    width: 90%;
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    margin-top: auto; 
+}
+
+#move-complete {
+    width: 100%;
+    padding: 12px;
+    background-color: #e44637;
+    color: white;
+    border-radius: 10px;
 }
 
 @media all and (max-width:970px){

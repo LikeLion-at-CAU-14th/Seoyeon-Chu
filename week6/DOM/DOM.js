@@ -4,6 +4,14 @@ class DOM {
         this.node.innerText = innerText;
         if(className) this.node.classList.add(className);
     }
+
+    appendNode(childNode) {
+        this.node.appendChild(childNode);
+    }
+
+    clearText() {
+        this.node.innerText = '';
+    }
 }
 
 export default DOM;

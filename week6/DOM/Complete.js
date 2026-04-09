@@ -1,16 +1,16 @@
 import Button from "./Button.js";
 import Div from "./Div.js";
 
-class Todo {
+class Complete {
     constructor(todo) {
         this.row = new Div('', 'row').node;
         this.textBox = new Div(todo, 'text-box');
-        this.completeBtn = new Button('✅', 'complete-btn');
-        this.delBtn = new Button('🗑️', 'del-btn');
+        this.textBox.node.classList.add('done-text');
+        this.delBtn = new Button('', 'del-btn');
     }
 
     addRow() {
-        [this.textBox, this.completeBtn, this.delBtn].forEach((dom) => {
+        [this.textBox, this.delBtn].forEach((dom) => {
             this.row.appendChild(dom.node);
         });
         return this.row;
@@ -20,17 +20,9 @@ class Todo {
         return this.row;
     }
 
-    getCompleteBtn() {
-        return this.completeBtn.node;
-    }
-
     getDelBtn() {
         return this.delBtn.node;
     }
-
-    getInnerText() {
-        return this.textBox.node;
-    }
 }
 
-export default Todo;
+export default Complete;
