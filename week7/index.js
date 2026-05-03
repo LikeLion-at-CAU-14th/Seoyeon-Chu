@@ -43,11 +43,11 @@ async function getData() {
         const info = document.createElement("span");
         info.innerText = `
         ${photoIndex++}번째 사진
-        제목: ${data.galTitle}
-        장소: ${data.galPhotographyLocation}`;
+        📌 ${data.galTitle}
+        📍 ${data.galPhotographyLocation}`;
         
         const detailBtn = document.createElement("button");
-        detailBtn.innerText = "더보기";
+        detailBtn.innerText = "➕더보기";
 
         detailBtn.addEventListener("click", () => {
           localStorage.setItem("selectedPhoto", JSON.stringify(data));

@@ -22,11 +22,11 @@ function formatDate(dateStr) {
 const date = formatDate(selectedPhoto.galCreatedtime);
 
   info.innerHTML = `
-    <p><strong>제목:</strong> ${selectedPhoto.galTitle}</p>
-    <p><strong>장소:</strong> ${selectedPhoto.galPhotographyLocation}</p>
-    <p><strong>날짜:</strong> ${date}</p>
-    <p><strong>촬영자:</strong> ${selectedPhoto.galPhotographer || "정보 없음"}</p>
-    <p><strong>키워드:</strong> ${selectedPhoto.galSearchKeyword || "정보 없음"}</p>
+    <p><strong>📌제목:</strong> ${selectedPhoto.galTitle}</p>
+    <p><strong>📍장소:</strong> ${selectedPhoto.galPhotographyLocation}</p>
+    <p><strong>📅날짜:</strong> ${date}</p>
+    <p><strong>📸촬영자:</strong> ${selectedPhoto.galPhotographer || "정보 없음"}</p>
+    <p><strong>✨키워드:</strong> ${selectedPhoto.galSearchKeyword || "정보 없음"}</p>
   `;
 
   detailContainer.appendChild(image);

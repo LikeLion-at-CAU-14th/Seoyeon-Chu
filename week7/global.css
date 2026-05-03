@@ -10,7 +10,7 @@ body {
   justify-content: center;
   font-family: "Gowun Dodum", sans-serif;
   padding-bottom: 5%;
-  background-color: #e2e2e2;
+  background: linear-gradient(135deg, #e2e2e2, #c9d6ff);
 }
 
 button {
