@@ -5,7 +5,7 @@ const Body = () => {
   return (
     <BodyContainer>
         <RoleBadge>프론트엔드</RoleBadge>
-        <Bio>안녕하세요1 저는 추서연입니다</Bio>
+        <Bio>안녕하세요! 저는 추서연입니다</Bio>
     </BodyContainer>
   )
 }

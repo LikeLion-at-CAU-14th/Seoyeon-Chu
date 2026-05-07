@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <TagList>
         <Tag>중앙대</Tag>
-        <Tag>학과</Tag>
+        <Tag>멋쟁이사자처럼 14기</Tag>
     </TagList>
   )
 }
