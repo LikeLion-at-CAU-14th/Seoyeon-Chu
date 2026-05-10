@@ -1,33 +1,22 @@
+import { useState } from "react";
+import "./App.css";
 
-import styled from 'styled-components'
-import Header from './component/Header.jsx'
-import Body from './component/Body';
-import Footer from './component/Footer.jsx';
+import Home from "./component/Home";
+import Photo from "./component/Photo";
+import About from "./component/About";
+import Header from "./component/Header";
+import TagCard from "./component/TagCard";
 
-const App = () => {
+function App() {
+  const [page, setPage] = useState("home");
+
   return (
-    <Container> 
-      <CardBox> 
-        <Header /> 
-        <Body /> 
-        <Footer /> 
-      </CardBox> 
-    </Container>
-  )
+    <>
+      {page === "home" && <Home setPage={setPage} />}
+      {page === "photo" && <Photo setPage={setPage} />}
+      {page === "about" && <About setPage={setPage} />}
+    </>
+  );
 }
 
 export default App;
-
-const Container = styled.div`
-  display: flex; 
-  justify-content: center; 
-  align-items: center; 
-  min-height: 100vh; 
-  background: #f9fafb;
-`
-const CardBox = styled.div`
-  background: white; 
-  border-radius: 20px; 
-  padding: 40px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-`

@@ -1,43 +1,13 @@
-
-import styled from 'styled-components'
-
-const Header = () => {
+function Header({ setPage }) {
   return (
-    <HeaderContainer>
-        <Avatar>
-            <span>z</span>
-        </Avatar>
-        <Name>서연</Name>
-    </HeaderContainer>
-  )
+    <header>
+      <nav>
+        <button onClick={() => setPage("home")}>Home</button>
+        <button onClick={() => setPage("photo")}>Photo</button>
+        <button onClick={() => setPage("about")}>About Me</button>
+      </nav>
+    </header>
+  );
 }
 
-export default Header
-
-const HeaderContainer = styled.div`
-    text-align: center;
-
-// Header.jsx
-`
-
-const Avatar = styled.div`
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  background: #fff7ed;
-  margin: 0 auto 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  
-  span {
-    font-size: 2.5rem;
-  }
-`
-
-const Name = styled.h3`
-  font-size: 1.3rem;
-  font-weight: 800;
-  color: #1f2937;
-  margin: 0 0 8px;
-`
+export default Header;
