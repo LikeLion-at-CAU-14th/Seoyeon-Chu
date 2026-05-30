@@ -21,6 +21,11 @@ const LionList = () => {
     const offset        = (curPage - 1) * PER_PAGE;
     const displayedData = filteredData.slice(offset, offset + PER_PAGE);
 
+    console.log('lionData:', lionData);
+    console.log('filter:', filter);
+    console.log('filteredData:', filteredData);
+    console.log('displayedData:', displayedData);
+
     const handleFilterChange = (newFilter) => {
         setFilter(newFilter);
         setCurPage(1); // 필터 변경 시 항상 1페이지로!
