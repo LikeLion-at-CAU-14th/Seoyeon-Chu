@@ -104,12 +104,13 @@ const QuizDom = styled.div`
   align-items: center;
   width: 80%;
   max-width: 800px;
-  gap: 20px;
+  gap: 18px;
 `;
 
 const Title = styled.h1`
   font-size: 40px;
   color: #4a4a4a;
+  margin: 0;
 `;
 
 const QuestionCard = styled.div`

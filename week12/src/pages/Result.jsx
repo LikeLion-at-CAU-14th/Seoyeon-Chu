@@ -44,11 +44,11 @@ const Result = () => {
             </MessageText>
 
             <StyledLink to="/">
-                메인으로 돌아가기↩️
+                Home으로 돌아가기 ↩️
             </StyledLink>
 
             <StyledLink to="/quiz">
-                🔄️다시 풀기🔄️
+                🔄️ 다시 풀기 🔄️
             </StyledLink>
         </ResultDom>
     );
@@ -66,22 +66,26 @@ const ResultDom = styled.div`
   padding: 60px;
   border-radius: 20px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  margin: 0;
 `;
 
 const Title = styled.h1`
   font-size: 40px;
   color: #535353;
+  margin: 0;
 `;
 
 const ScoreText = styled.div`
   font-size: 30px;
   font-weight: 700;
   color: #333333;
+  margin: 0;
 `;
 
 const MessageText = styled.div`
   font-size: 25px;
   color: #4a4a4a;
+  margin: 0;
 `;
 
 const StyledLink = styled(Link)`
@@ -96,6 +100,7 @@ const StyledLink = styled(Link)`
   align-items: center;
   font-size: 20px;
   font-weight: 700;
+  margin: 0;
 
   &:hover {
     background-color: #75b5f5;
