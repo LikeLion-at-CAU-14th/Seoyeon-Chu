@@ -2,19 +2,28 @@ import React from 'react'
 import './App.css';
 import styled from 'styled-components';
 import { Route, Routes } from 'react-router-dom';
+
 import BookList from './pages/BookList';
 import Home from './pages/Home';
 import BookDetail from './pages/BookDetail';
+
+import Quiz from './pages/Quiz';
+import Result from './pages/Result';
 
 const App = () => {
   return (
     <AppDom>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/quiz" element={<Quiz />} />
+        <Route path="/result" element={<Result />} />
+
+        {/* 실습 부분 남겨두었습니다! */}
         <Route path="/books" element={<BookList />} >
           <Route path=":id" element={<BookDetail />} />
-        </Route>
         
+        </Route>
+
       </Routes>
 
     </AppDom>
