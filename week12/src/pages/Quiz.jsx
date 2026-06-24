@@ -105,6 +105,7 @@ const QuizDom = styled.div`
   width: 80%;
   max-width: 800px;
   gap: 18px;
+  margin: 0;
 `;
 
 const Title = styled.h1`
@@ -119,17 +120,22 @@ const QuestionCard = styled.div`
   padding: 25px;
   border-radius: 20px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 `;
 
 const QuestionTitle = styled.h3`
   font-size: 22px;
   color: #535353;
+  margin: 0;
 `;
 
 const AnswerList = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  margin: 0;
 `;
 
 const AnswerButton = styled.button`
@@ -139,6 +145,7 @@ const AnswerButton = styled.button`
   padding: 10px 18px;
   cursor: pointer;
   font-weight: 700;
+  margin: 0;
 
   &:hover {
     background-color: #9ecfff;
@@ -154,6 +161,7 @@ const SubmitButton = styled.button`
   font-size: 20px;
   cursor: pointer;
   font-weight: 700;
+  
 
   &:hover {
     background-color: #9ecfff;
