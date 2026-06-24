@@ -6,7 +6,7 @@ const Home = () => {
     return (
         <div>
             <MenuDom>
-                <Title>멋사 12주차 과제</Title> 
+                <Title>🦁 멋사 12주차 과제 🦁</Title> 
                 <StyledLink to="/quiz">👉 퀴즈 풀러 가기 👈</StyledLink>
             </MenuDom>
         </div>
