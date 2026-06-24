@@ -67,7 +67,7 @@ const Quiz = () => {
 
     return (
         <QuizDom>
-            <Title>🔎퀴즈🔎</Title>
+            <Title>FE 퀴즈</Title>
 
             {questions.map((question, index) => (
                 <QuestionCard key={question.id}>
