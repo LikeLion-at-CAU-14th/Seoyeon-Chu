@@ -33,7 +33,7 @@ const Result = () => {
 
     return (
         <ResultDom>
-            <Title>퀴즈 결과</Title>
+            <Title>결과 보기</Title>
 
             <ScoreText>
                 내 점수: {score} / 5
