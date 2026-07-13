@@ -18,13 +18,18 @@ const Mypage = () => {
         setLoading(false);
       })
       .catch((error) => {
-        clearTokens();
-        setToastMessage("로그인이 만료되었습니다. 다시 로그인해주세요.");
+    if (error.response?.status === 401) {
+      clearTokens();
+      setToastMessage("로그인이 만료되었습니다. 다시 로그인해주세요.");
 
-        setTimeout(() => {
-          navigate("/");
-        }, 1200);
-      });
+      setTimeout(() => {
+        navigate("/");
+      }, 1200);
+    } else {
+      setToastMessage("마이페이지 정보를 불러오지 못했습니다.");
+      setLoading(false);
+    }
+  });
   }, [navigate]);
   // TODO: 마이페이지에 로그아웃 버튼 만들어 로그아웃 기능 구현하기
     const onLogout = () => {
