@@ -10,7 +10,7 @@ const LionCard = ({ data }) => {
             <Name>{data.name}</Name>
 
             {/* 파트 */}
-            <Part>프론트엔드</Part>
+            <Part>{data.part}</Part>
         </CardLayout>
     );
 };
