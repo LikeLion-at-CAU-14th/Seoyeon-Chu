@@ -1,43 +1,26 @@
-import React from 'react'
-import './App.css';
-import styled from 'styled-components';
-import { Route, Routes } from 'react-router-dom';
+import React from "react";
+import { Route, Routes } from "react-router-dom";
 
-import BookList from './pages/BookList';
-import Home from './pages/Home';
-import BookDetail from './pages/BookDetail';
-
-import Quiz from './pages/Quiz';
-import Result from './pages/Result';
+import BookList from "./pages/BookList";
+import Home from "./pages/Home";
+import BookDetail from "./pages/BookDetail";
+import Quiz from "./pages/Quiz";
+import Result from "./pages/Result";
 
 const App = () => {
   return (
-    <AppDom>
+    <main className="flex min-h-[95vh] w-full flex-col items-center justify-center gap-[30px]">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/quiz" element={<Quiz />} />
         <Route path="/result" element={<Result />} />
 
-        {/* 실습 부분 남겨두었습니다! */}
-        <Route path="/books" element={<BookList />} >
+        <Route path="/books" element={<BookList />}>
           <Route path=":id" element={<BookDetail />} />
-        
         </Route>
-
       </Routes>
-
-    </AppDom>
-  )
-}
+    </main>
+  );
+};
 
 export default App;
-
-const AppDom = styled.div`
-  display: flex;
-  width: 100%;
-  min-height: 95vh;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 30px;
-`;

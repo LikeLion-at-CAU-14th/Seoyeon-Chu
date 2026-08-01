@@ -1,85 +1,72 @@
-import styled from "styled-components";
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { Outlet, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const BookList = () => {
-    // books: 책 목록 상태 변수(초기값 빈 배열), setBooks: 책 목록 상태를 업데이트하는 함수
-    const [books, setBooks] = useState([]);
+  const [books, setBooks] = useState([]);
 
-    // usenavigate 훅으로 페이지 이동 함수 가져오기
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    const goHome = () => {
-        navigate("/");
-    }
+  const goHome = () => {
+    navigate("/");
+  };
 
-    // [실습 18] useeffect
-    // [실습 17]
-    useEffect(() => {
-        const fetchBooks = async () => {
-            const response = await axios.get(`/databases/books.json`);
-            setBooks(response.data);
-        }
-        fetchBooks();
-    }, []);
+  useEffect(() => {
+    const fetchBooks = async () => {
+      try {
+        const response = await axios.get("/databases/books.json");
+        setBooks(response.data);
+      } catch (error) {
+        console.error("도서 목록 불러오기 실패:", error);
+      }
+    };
 
-    return (
-        <MenuDom>
-            <BookListDom>
-                <Title onClick={goHome}>Book List</Title>
-                <Title>Book List</Title>
-                <ul>
-                    {/* [실습 12] books 배열을 map() 함수를 이용하여 화면에 출력하기 */}
-                    {books.map((book) => (
-                        <Link key={book.id} to={`/books/${book.id}`}>
-                            <li>{book.title}</li>
-                        </Link>
-                    ))}
-                </ul>
-            </BookListDom>
-            <BookDetailDom>
-                <Outlet />
-            </BookDetailDom>
-        </MenuDom>
-    );
+    fetchBooks();
+  }, []);
+
+  return (
+    <div className="m-5 flex h-[80vh] w-full items-center justify-start gap-5">
+      <section
+        className="
+          flex h-4/5 flex-col justify-start
+          rounded-r-[10px] bg-white p-[50px]
+          shadow-[2px_2px_5px_rgba(0,0,0,0.1)]
+        "
+      >
+        <button
+          type="button"
+          onClick={goHome}
+          className="
+            cursor-pointer text-left text-[40px]
+            font-bold text-[#535353]
+            transition-colors hover:text-[#75b5f5]
+          "
+        >
+          Book List
+        </button>
+
+        <ul className="mt-5 flex list-none flex-col gap-3 p-0">
+          {books.map((book) => (
+            <li key={book.id}>
+              <Link
+                to={`/books/${book.id}`}
+                className="
+                  text-lg text-[#535353] no-underline
+                  transition-colors hover:text-[#75b5f5]
+                "
+              >
+                {book.title}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="mt-[100px] flex h-full flex-col items-center justify-start p-[50px]">
+        <Outlet />
+      </section>
+    </div>
+  );
 };
+
 export default BookList;
-
-const BookDetailDom = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  align-items: center;
-  padding: 50px;
-  height: 100%;
-  border-radius: 0 10px 10px 0;
-  margin-top: 100px;
-`;
-
-const MenuDom = styled.div`
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  gap: 20px;
-  width: 100%;
-  height: 80vh;
-  margin: 20px;
-`;
-
-const Title = styled.div`
-  font-size: 40px;
-  color: #535353;
-  font-weight: 700;
-`;
-
-const BookListDom = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  background-color: white;
-  padding: 50px;
-  height: 80%;
-  border-radius: 0 10px 10px 0;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-`;

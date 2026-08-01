@@ -1,169 +1,132 @@
-import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-const BASE_URL = 'https://week12-api-rcwo.onrender.com';
+const BASE_URL = "https://week12-api-rcwo.onrender.com";
 
 const Quiz = () => {
-    const [questions, setQuestions] = useState([]);
-    const [selectedAnswers, setSelectedAnswers] = useState({});
-    const [loading, setLoading] = useState(true);
+  const [questions, setQuestions] = useState([]);
+  const [selectedAnswers, setSelectedAnswers] = useState({});
+  const [loading, setLoading] = useState(true);
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    // 문제 목록 가져오기
-    useEffect(() => {
-        const fetchQuestions = async () => {
-            try {
-                const response = await axios.get(`${BASE_URL}/api/questions`);
-                setQuestions(response.data);
-            } catch (error) {
-                console.error('문제 불러오기 실패:', error);
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchQuestions();
-    }, []);
-
-    const handleSelectAnswer = (questionId, answer) => {
-        setSelectedAnswers({
-            ...selectedAnswers,
-            [questionId]: answer,
-        });
+  useEffect(() => {
+    const fetchQuestions = async () => {
+      try {
+        const response = await axios.get(`${BASE_URL}/api/questions`);
+        setQuestions(response.data);
+      } catch (error) {
+        console.error("문제 불러오기 실패:", error);
+      } finally {
+        setLoading(false);
+      }
     };
 
-    const handleSubmit = async () => {
-        const answers = questions.map((question) => ({
-            id: question.id,
-            answer: selectedAnswers[question.id],
-        }));
+    fetchQuestions();
+  }, []);
 
-        if (answers.some((item) => !item.answer)) {
-            alert('모든 문제의 답을 선택해주세요‼️');
-            return;
-        }
+  const handleSelectAnswer = (questionId, answer) => {
+    setSelectedAnswers((prev) => ({
+      ...prev,
+      [questionId]: answer,
+    }));
+  };
 
-        try {
-            const response = await axios.post(`${BASE_URL}/api/answers`, {
-                answers: answers,
-            });
+  const handleSubmit = async () => {
+    const answers = questions.map((question) => ({
+      id: question.id,
+      answer: selectedAnswers[question.id],
+    }));
 
-            const results = response.data.results;
-            const score = results.filter((result) => result.correct).length;
-
-            navigate(`/result?score=${score}`);
-        } catch (error) {
-            console.error('답안 제출 실패:', error);
-            alert('⚠️답안 제출 중 오류가 발생했습니다.⚠️');
-        }
-    };
-
-    if (loading) {
-        return <div>문제를 불러오는 중입니다...</div>;
+    if (answers.some((item) => !item.answer)) {
+      alert("모든 문제의 답을 선택해주세요‼️");
+      return;
     }
 
-    return (
-        <QuizDom>
-            <Title>FE 퀴즈</Title>
+    try {
+      const response = await axios.post(`${BASE_URL}/api/answers`, {
+        answers,
+      });
 
-            {questions.map((question, index) => (
-                <QuestionCard key={question.id}>
-                    <QuestionTitle>
-                        {index + 1}. {question.question}
-                    </QuestionTitle>
+      const results = response.data.results;
+      const score = results.filter((result) => result.correct).length;
 
-                    <AnswerList>
-                        {question.answers.map((answer) => (
-                            <AnswerButton
-                                key={answer}
-                                onClick={() => handleSelectAnswer(question.id, answer)}
-                                $isSelected={selectedAnswers[question.id] === answer}
-                            >
-                                {answer}
-                            </AnswerButton>
-                        ))}
-                    </AnswerList>
-                </QuestionCard>
-            ))}
+      navigate(`/result?score=${score}`);
+    } catch (error) {
+      console.error("답안 제출 실패:", error);
+      alert("⚠️답안 제출 중 오류가 발생했습니다.⚠️");
+    }
+  };
 
-            <SubmitButton onClick={handleSubmit}>
-                제출 버튼
-            </SubmitButton>
-        </QuizDom>
-    );
+  if (loading) {
+    return <div className="text-xl text-[#4a4a4a]">문제를 불러오는 중입니다...</div>;
+  }
+
+  return (
+    <div className="m-0 flex w-4/5 max-w-[800px] flex-col items-center gap-[18px]">
+      <h1 className="m-0 text-[40px] font-bold text-[#4a4a4a]">
+        FE 퀴즈
+      </h1>
+
+      {questions.map((question, index) => (
+        <section
+          key={question.id}
+          className="
+            flex w-full flex-col gap-5 rounded-[20px]
+            bg-white p-[25px]
+            shadow-[2px_2px_5px_rgba(0,0,0,0.1)]
+          "
+        >
+          <h3 className="m-0 text-[22px] font-bold text-[#535353]">
+            {index + 1}. {question.question}
+          </h3>
+
+          <div className="m-0 flex flex-wrap gap-[10px]">
+            {question.answers.map((answer) => {
+              const isSelected =
+                selectedAnswers[question.id] === answer;
+
+              return (
+                <button
+                  key={answer}
+                  type="button"
+                  onClick={() =>
+                    handleSelectAnswer(question.id, answer)
+                  }
+                  className={`
+                    m-0 cursor-pointer rounded-[15px]
+                    px-[18px] py-[10px] font-bold
+                    transition-colors duration-200
+                    hover:bg-[#9ecfff] hover:text-white
+                    ${
+                      isSelected
+                        ? "bg-[#75b5f5] text-white"
+                        : "bg-[#eeeeee] text-[#535353]"
+                    }
+                  `}
+                >
+                  {answer}
+                </button>
+              );
+            })}
+          </div>
+        </section>
+      ))}
+
+      <button
+        type="button"
+        onClick={handleSubmit}
+        className="
+          cursor-pointer rounded-[25px] bg-[#75b5f5]
+          px-10 py-[15px] text-xl font-bold text-white
+          transition-colors duration-200 hover:bg-[#9ecfff]
+        "
+      >
+        제출 버튼
+      </button>
+    </div>
+  );
 };
 
 export default Quiz;
-
-const QuizDom = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 80%;
-  max-width: 800px;
-  gap: 18px;
-  margin: 0;
-`;
-
-const Title = styled.h1`
-  font-size: 40px;
-  color: #4a4a4a;
-  margin: 0;
-`;
-
-const QuestionCard = styled.div`
-  width: 100%;
-  background-color: white;
-  padding: 25px;
-  border-radius: 20px;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-`;
-
-const QuestionTitle = styled.h3`
-  font-size: 22px;
-  color: #535353;
-  margin: 0;
-`;
-
-const AnswerList = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin: 0;
-`;
-
-const AnswerButton = styled.button`
-  background-color: ${(props) => props.$isSelected ? '#75b5f5' : '#eeeeee'};
-  color: ${(props) => props.$isSelected ? 'white' : '#535353'};
-  border-radius: 15px;
-  padding: 10px 18px;
-  cursor: pointer;
-  font-weight: 700;
-  margin: 0;
-
-  &:hover {
-    background-color: #9ecfff;
-    color: white;
-  }
-`;
-
-const SubmitButton = styled.button`
-  background-color: #75b5f5;
-  color: #ffffff;
-  border-radius: 25px;
-  padding: 15px 40px;
-  font-size: 20px;
-  cursor: pointer;
-  font-weight: 700;
-  
-
-  &:hover {
-    background-color: #9ecfff;
-  }
-`;
