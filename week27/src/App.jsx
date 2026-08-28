@@ -91,7 +91,7 @@ function App() {
       <div className="chat-container">
         <header className="chat-header">
           <div>
-            <h1>Likelion Chatbot</h1>
+            <h1>Likelion CAU Chatbot 🦁</h1>
             <p>week27 AI API 실습</p>
           </div>
 
@@ -110,7 +110,7 @@ function App() {
               }`}
             >
               {message.role === "assistant" && (
-                <div className="avatar">AI</div>
+                <div className="avatar">멋사AI</div>
               )}
 
               <div

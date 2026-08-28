@@ -60,6 +60,18 @@ textarea {
   font-size: 13px;
 }
 
+.chat-header > div:first-child {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.chat-header h1,
+.chat-header p {
+  margin-left: 0;
+  padding-left: 0;
+}
+
 .status {
   display: flex;
   align-items: center;
