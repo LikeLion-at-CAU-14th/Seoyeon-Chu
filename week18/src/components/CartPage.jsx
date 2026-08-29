@@ -6,26 +6,87 @@ import useCartStore from '../store/useCartStore';
 function CartPage() {
     const cartItems = useCartStore((state) => state.cartItems);
     const removeFromCart = useCartStore((state) => state.removeFromCart);
+    const increaseQuantity = useCartStore((state) => state.increaseQuantity);
+    const decreaseQuantity = useCartStore((state) => state.decreaseQuantity);
+    const clearCart = useCartStore((state) => state.clearCart);
+    const [isOrderComplete, setIsOrderComplete] = useState(false);
+
+    const totalPrice = cartItems.reduce(
+        (total, item) => total + item.price * item.quantity,
+        0
+    );
+
+    const handleCheckout = () => {
+        clearCart();
+        setIsOrderComplete(true);
+    };
+
+    if (isOrderComplete) {
+        return (
+            <Section>
+                <SectionTitle>장바구니</SectionTitle>
+                <OrderComplete>주문 완료</OrderComplete>
+            </Section>
+        );
+    }
 
     return (
         <Section>
             <SectionTitle>장바구니</SectionTitle>
+
             {cartItems.length === 0 ? (
                 <Empty>담긴 상품이 없습니다.</Empty>
             ) : (
-                <List>
-                    {cartItems.map((item, index) => (
-                        <Item key={index}>
-                            <ItemName>{item.name}</ItemName>
-                            <ItemPrice>{item.price.toLocaleString()}원</ItemPrice>
-                            <RemoveButton onClick={() => removeFromCart(index)}>삭제</RemoveButton>
-                        </Item>
-                    ))}
-                </List>
+                <>
+                    <List>
+                        {cartItems.map((item) => (
+                            <Item key={item.id}>
+                                <ItemName>{item.name}</ItemName>
+
+                                <QuantityControl>
+                                    <QtyButton
+                                        onClick={() =>
+                                            decreaseQuantity(item.id)
+                                        }
+                                    >
+                                        -
+                                    </QtyButton>
+
+                                    <span>{item.quantity}</span>
+
+                                    <QtyButton
+                                        onClick={() =>
+                                            increaseQuantity(item.id)
+                                        }
+                                    >
+                                        +
+                                    </QtyButton>
+                                </QuantityControl>
+
+                                <ItemPrice>
+                                    {(item.price * item.quantity).toLocaleString()}원
+                                </ItemPrice>
+
+                                <RemoveButton
+                                    onClick={() => removeFromCart(item.id)}
+                                >
+                                    삭제
+                                </RemoveButton>
+                            </Item>
+                        ))}
+                    </List>
+
+                    <Total>
+                        총 금액 {totalPrice.toLocaleString()}원
+                    </Total>
+
+                    <CheckoutButton onClick={handleCheckout}>
+                        결제하기
+                    </CheckoutButton>
+                </>
             )}
         </Section>
-    )
-
+    );
 }
 
 export default CartPage
