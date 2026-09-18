@@ -3,3 +3,9 @@ export interface Todo{
     text: string;
     isDone: boolean;
 }
+
+export interface QuoteResponse{
+    id: number;
+    quote: string;
+    author: string;
+}

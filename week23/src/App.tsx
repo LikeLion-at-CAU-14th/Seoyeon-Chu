@@ -6,10 +6,13 @@ import { useState } from 'react';
 import type { QuoteResponse, Todo } from './types/todo';
 import TodoItem from './components/TodoItem';
 
+type FilterType = 'all' | 'active' | 'completed';
 
 export default function App() {
   // TODO [STEP 2]: Todo[] 제네릭 상태 선언하기
   const [todos, setTodos] = useState<Todo[]>([]);
+
+  const [filter, setFilter] = useState<FilterType>('all');
   // TODO [STEP 3]: handleAdd 함수 작성하기
   const handleAdd = (text: string) => {
     const newTodo: Todo = {
@@ -30,6 +33,18 @@ export default function App() {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
   const completedCount = todos.filter((todo) => todo.isDone).length;
+
+  const filteredTodos = todos.filter((todo) => {
+    if (filter === 'active') {
+      return !todo.isDone;
+    }
+
+    if (filter === 'completed') {
+      return todo.isDone;
+    }
+
+    return true;
+  });
   // TODO [STEP 5]: 명언 상태(quote, author) 및 로딩 상태(isLoading) 선언하기
   const [quote, setQuote] = useState<string>(' ');
   const [author, setAuthor] = useState<string>(' ');
@@ -70,20 +85,47 @@ export default function App() {
         </AdviceSection>
 
         <TodoInput onAdd={handleAdd} />
+        <FilterContainer>
+          <FilterButton
+            $active={filter === 'all'}
+            onClick={() => setFilter('all')}
+          >
+            전체
+          </FilterButton>
+
+          <FilterButton
+            $active={filter === 'active'}
+            onClick={() => setFilter('active')}
+          >
+            진행 중
+          </FilterButton>
+
+          <FilterButton
+            $active={filter === 'completed'}
+            onClick={() => setFilter('completed')}
+          >
+            완료
+          </FilterButton>
+        </FilterContainer>
+
         <TodoList>
-        {todos.length === 0 ? (
-          <Empty>할 일이 없습니다. 새로운 할 일을 추가해보세요!</Empty>
-        ) : (
-          todos.map((todo) => (
-            <TodoItem
-              key={todo.id}
-              todo={todo}
-              onToggle={handleToggle}
-              onDelete={handleDelete}
-            />
-          ))
-        )}
-          {/* TODO [STEP 4]: todos.map 돌려서 TodoItem 렌더링하기 */}
+          {filteredTodos.length === 0 ? (
+            <Empty>
+              {todos.length === 0
+                ? '할 일이 없습니다. 새로운 할 일을 추가해보세요!'
+                : '해당 조건의 할 일이 없습니다.'}
+            </Empty>
+          ) : (
+           
+            filteredTodos.map((todo) => (
+              <TodoItem
+                key={todo.id}
+                todo={todo}
+                onToggle={handleToggle}
+                onDelete={handleDelete}
+              />
+            ))
+          )}
         </TodoList>
       </Container>
     </Wrapper>
@@ -169,7 +211,7 @@ const RecommendButton = styled.button`
     background-color: #dbe4ff;
   }
 `;
-/*
+
 // 과제용 스타일 (필요시 사용해주세요!)
 const FilterContainer = styled.div`
   display: flex;
@@ -195,4 +237,3 @@ const FilterButton = styled.button<{ $active: boolean }>`
     border-color: #ff6b35;
   }
 `;
-*/

@@ -2,15 +2,22 @@ import { useState } from 'react';
 import styled from 'styled-components';
 
 // TODO [실습 2단계]: TodoInputProps 정의 (onAdd 함수 타입)
-export default function TodoInput() {
-const [text, setText] = useState('');
-// TODO [실습 2단계]: ChangeEvent 타이핑 및 상태 업데이트
-const handleChange = (e: any) => {
-setText(e.target.value);
-};
+interface TodoInputProps {
+  onAdd: (text: string) => void;
+}
+
+export default function TodoInput({ onAdd }: TodoInputProps) {
+  const [text, setText] = useState('');
+  // TODO [실습 2단계]: ChangeEvent 타이핑 및 상태 업데이트
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setText(e.target.value);
+  };
 // TODO [실습 2단계]: FormEvent 타이핑 및 onAdd 호출
-const handleSubmit = (e: any) => {
-e.preventDefault();
+const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  if(!text.trim()) return;
+  onAdd(text);
+  setText('');
 };
 
   return (
