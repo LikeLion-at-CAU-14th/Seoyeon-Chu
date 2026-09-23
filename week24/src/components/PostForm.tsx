@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 interface PostFormProps {
   // [실습] 제목과 내용을 부모에게 전달하는 onAdd 함수 타입 작성하기
+  onAdd: (title: string, content: string) => void;
 }
 
 export default function PostForm({ onAdd }: PostFormProps) {

@@ -47,8 +47,26 @@ const delay = (ms: number) => {
 };
 
 // [실습] 게시글 목록 조회 함수 작성하기
+export async function getPosts(): Promise<Post[]> {
+  await delay(500);
+  return posts;
+} 
 
 // [실습] 게시글 추가 함수 작성하기
+export async function addPost({ title, content }: AddPostInput): Promise<Post> {
+  await delay(300);
+
+  const newPost: Post = {
+    id: Date.now(),
+    title,
+    content,
+  };
+
+  posts = [newPost, ...posts];
+  savePosts(posts);
+  
+  return newPost;
+}
 
 // [과제 1-1] 게시글 상세 조회 함수 작성하기
 

@@ -6,6 +6,8 @@ import PostItem from './PostItem';
 interface PostListProps {
   posts: Post[];
   // [실습] useQuery가 제공하는 로딩, 에러상태
+  isPending: boolean;
+  isError: boolean;
 	onSelect: (id: number) => void;
 }
 
@@ -16,8 +18,14 @@ export default function PostList({
   onSelect,
 }: PostListProps) {
   // [실습] 로딩 상태일 때 보여줄 화면 작성하기
+  if (isPending) {
+    return <Message>게시글을 불러오는 중입니다...</Message>;
+  }
 
   // [실습] 에러 상태일 때 보여줄 화면 작성하기
+  if (isError) {
+    return <Message>게시글을 불러오지 못했습니다.</Message>;
+  }
 
   return (
     <List>

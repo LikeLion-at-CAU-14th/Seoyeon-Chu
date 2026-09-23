@@ -3,17 +3,30 @@ import styled from 'styled-components';
 import Header from './components/Header';
 import PostForm from './components/PostForm';
 import PostList from './components/PostList';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { addPost, getPosts } from './api/posts';
 
 export default function App() {
 	// 선택된 게시글 id 상태 만들기
   const [selectedPostId, setSelectedPostId] = useState<number | null>(null);
 
   // [실습] queryClient 가져오기
+  const queryClient = useQueryClient();
 
   // [실습] useQuery로 게시글 목록 조회하기
+  const postQuery = useQuery({
+    queryKey: ['posts'],
+    queryFn: getPosts,
+  });
 
   // [실습] useMutation으로 게시글 추가 기능 만들기
-  
+  const addPostMutation = useMutation({
+    mutationFn: addPost,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['posts'] });
+    },
+  });  
+
   // [과제2] useQuery로 선택된 게시글 상세 조회하기(staleTime 추가해보기)
 
   // [과제3] useMutation으로 게시글 삭제 기능 만들기
@@ -25,20 +38,22 @@ export default function App() {
 
         <PostForm
           // [실습] 게시글 추가 mutation 연결하기
-          onAdd={() => {}}
+          onAdd={(title, content) => {
+            addPostMutation.mutate({title, content});
+          }}
         />
 
         <ContentLayout>
           <ListSection>
             <PostList
               // [실습] 게시글 목록 데이터 전달하기
-              posts={ }
+              posts={postQuery.data ?? []}
               // [실습] 목록 로딩 상태 전달하기
-              isPending={}
+              isPending={postQuery.isPending}
               // [실습] 목록 에러 상태 전달하기
-              isError={}
+              isError={postQuery.isError}
               // [실습] 게시글 클릭 시 선택된 id 저장하기
-              onSelect={}
+              onSelect={setSelectedPostId}
             />
           </ListSection>
           
