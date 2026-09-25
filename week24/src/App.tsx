@@ -3,8 +3,9 @@ import styled from 'styled-components';
 import Header from './components/Header';
 import PostForm from './components/PostForm';
 import PostList from './components/PostList';
+import PostDetail from './components/PostDetail';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { addPost, getPosts } from './api/posts';
+import { addPost, deletePost, getPost, getPosts } from './api/posts';
 
 export default function App() {
 	// 선택된 게시글 id 상태 만들기
@@ -28,8 +29,33 @@ export default function App() {
   });  
 
   // [과제2] useQuery로 선택된 게시글 상세 조회하기(staleTime 추가해보기)
+  const postDetailQuery = useQuery({
+    queryKey: ['post', selectedPostId],
+    queryFn: () => getPost(selectedPostId!),
+    enabled: selectedPostId !== null,
+
+    // [도전 과제 파트] 캐싱 동작 확인
+    staleTime: 5 * 1000,
+    gcTime: 15 * 1000,
+  });
 
   // [과제3] useMutation으로 게시글 삭제 기능 만들기
+const deletePostMutation = useMutation({
+    mutationFn: deletePost,
+
+    onSuccess: (_data, deletedPostId) => {
+      
+      queryClient.invalidateQueries({
+        queryKey: ['posts'],
+      });
+
+      queryClient.removeQueries({
+        queryKey: ['post', deletedPostId],
+      });
+
+      setSelectedPostId(null);
+    },
+  });
 
   return (
     <Wrapper>
@@ -57,20 +83,27 @@ export default function App() {
             />
           </ListSection>
           
-					{/*
           <DetailSection>
 	          {selectedPostId === null ? (
 		          <EmptyDetail>게시글을 선택하면 상세 내용이 여기에 표시됩니다.</EmptyDetail>
 		        ) : (
-			        <PostDetail 
+			        <PostDetail
 				        // [과제4-1] 상세 조회 결과를 상세 컴포넌트에 전달.
+                post={postDetailQuery.data}
+
 				        // [과제4-2] 상세 조회의 로딩 상태를 전달.
+                isPending={postDetailQuery.isPending}
+                
 				        // [과제4-3] 상세 조회의 에러 상태를 전달.
+                isError={postDetailQuery.isError}
+
 				        // [과제4-4] 삭제 버튼을 누르면 현재 선택된 게시글 id로 삭제 mutation을 실행.
+                onDelete={() => {
+                  deletePostMutation.mutate(selectedPostId);
+                }}
 			        />
 			       )}
           </DetailSection>
-          */}
         </ContentLayout>
       </Container>
     </Wrapper>
