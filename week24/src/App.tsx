@@ -34,28 +34,27 @@ export default function App() {
     queryFn: () => getPost(selectedPostId!),
     enabled: selectedPostId !== null,
 
-    // [도전 과제 파트] 캐싱 동작 확인
+    // [도전 과제!!] 캐싱 동작 확인
     staleTime: 5 * 1000,
     gcTime: 15 * 1000,
   });
 
   // [과제3] useMutation으로 게시글 삭제 기능 만들기
-const deletePostMutation = useMutation({
-    mutationFn: deletePost,
+  const deletePostMutation = useMutation({
+      mutationFn: deletePost,
 
-    onSuccess: (_data, deletedPostId) => {
-      
-      queryClient.invalidateQueries({
-        queryKey: ['posts'],
-      });
+      onSuccess: (_data, deletedPostId) => {
+        queryClient.invalidateQueries({
+          queryKey: ['posts'],
+        });
 
-      queryClient.removeQueries({
-        queryKey: ['post', deletedPostId],
-      });
+        queryClient.removeQueries({
+          queryKey: ['post', deletedPostId],
+        });
 
-      setSelectedPostId(null);
-    },
-  });
+        setSelectedPostId(null);
+      },
+    });
 
   return (
     <Wrapper>
@@ -74,10 +73,13 @@ const deletePostMutation = useMutation({
             <PostList
               // [실습] 게시글 목록 데이터 전달하기
               posts={postQuery.data ?? []}
+
               // [실습] 목록 로딩 상태 전달하기
               isPending={postQuery.isPending}
+
               // [실습] 목록 에러 상태 전달하기
               isError={postQuery.isError}
+
               // [실습] 게시글 클릭 시 선택된 id 저장하기
               onSelect={setSelectedPostId}
             />
