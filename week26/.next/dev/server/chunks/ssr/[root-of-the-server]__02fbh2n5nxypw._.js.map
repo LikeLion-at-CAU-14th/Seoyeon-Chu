@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 13, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/smons/Desktop/Likelion14th-git/week26/app/favicon.ico.mjs%20(structured%20image%20object)"],"sourcesContent":["import src from \"IMAGE\";\nexport default { src, width: 48, height: 48 }\n"],"names":["src","width","height"],"mappings":";;;;AAAA;;uCACe;IAAEA,KAAAA,mIAAG;IAAEC,OAAO;IAAIC,QAAQ;AAAG"}},
+    {"offset": {"line": 28, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/smons/Desktop/Likelion14th-git/week26/app/page.tsx"],"sourcesContent":["import Link from \"next/link\";\n\nexport default function Home() {\n  return (\n    <section className=\"home\">\n      <h2>영화 아카이브</h2>\n\n      <p>\n        영화를 선택하고,\n        영화 정보를 회상해보세요.\n      </p>\n\n      {/* 실습 - Link Prefetching */}\n      <Link href=\"/movies\" className=\"button\">\n      영화 목록 보기\n      </Link>\n      \n    </section>\n  );\n}"],"names":["Home","className","href"],"mappings":";;;;;AAAA;;;AAEe,SAASA;IACtB,qBACE,8OAAC;QAAQC,WAAU;;0BACjB,8OAAC;0BAAG;;;;;;0BAEJ,8OAAC;0BAAE;;;;;;0BAMH,8OAAC,0LAAI;gBAACC,MAAK;gBAAUD,WAAU;0BAAS;;;;;;;;;;;;AAM9C"}}]
+}

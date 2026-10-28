@@ -161,12 +161,19 @@ textarea {
   resize: none;
   border: 1px solid #ddddE3;
   border-radius: 15px;
+  background: #f5f5f5;
+  color: #222;
   padding: 13px 15px;
   outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.chat-input-area textarea::placeholder {
+  color: #999;
 }
 
 .chat-input-area textarea:focus {
-  border-color: #999;
+  border-color: #ff7710;
 }
 
 .chat-input-area button {

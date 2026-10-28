@@ -3,18 +3,20 @@ import "./App.css";
 
 function App() {
   const [input, setInput] = useState("");
+
   const [messages, setMessages] = useState([
     {
       role: "assistant",
       text: "안녕하세요! 무엇이든 물어보세요 👋",
     },
   ]);
+
   const [loading, setLoading] = useState(false);
 
   const sendMessage = async () => {
     if (!input.trim() || loading) return;
 
-    const userMessage = input;
+    const userMessage = input.trim();
 
     setMessages((prev) => [
       ...prev,
@@ -28,33 +30,59 @@ function App() {
     setLoading(true);
 
     try {
-      const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${
-          import.meta.env.VITE_GEMINI_API_KEY
-        }`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            contents: [
-              {
-                parts: [
-                  {
-                    text: userMessage,
-                  },
-                ],
-              },
-            ],
-          }),
-        }
-      );
+      const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+      const model = "gemini-3.6-flash";
+
+      if (!apiKey) {
+        throw new Error(
+          "API Key를 찾을 수 없습니다. .env 파일을 확인해주세요."
+        );
+      }
+
+      const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
+
+
+      console.log("REQUEST MODEL:", model);
+      console.log("REQUEST URL:", url);
+
+      const response = await fetch(url, {
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json",
+        },
+
+        body: JSON.stringify({
+          contents: [
+            {
+              role: "user",
+              parts: [
+                {
+                  text: userMessage,
+                },
+              ],
+            },
+          ],
+        }),
+      });
 
       const data = await response.json();
 
+      console.log("HTTP STATUS:", response.status);
+      console.log("Gemini Response:", data);
+
+      if (!response.ok) {
+        throw new Error(
+          data?.error?.message ||
+            `Gemini API 요청에 실패했습니다. (${response.status})`
+        );
+      }
+
       const aiText =
-        data?.candidates?.[0]?.content?.parts?.[0]?.text ||
+        data?.candidates?.[0]?.content?.parts
+          ?.map((part) => part.text)
+          .filter(Boolean)
+          .join("\n") ||
         "응답을 가져오지 못했습니다.";
 
       setMessages((prev) => [
@@ -65,19 +93,20 @@ function App() {
         },
       ]);
     } catch (error) {
-      console.error(error);
+      console.error("Gemini API Error:", error);
 
       setMessages((prev) => [
         ...prev,
         {
           role: "assistant",
-          text: "오류가 발생했습니다. 다시 시도해주세요.",
+          text: `오류가 발생했습니다.\n${error.message}`,
         },
       ]);
     } finally {
       setLoading(false);
     }
   };
+
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter" && !e.shiftKey) {
@@ -89,6 +118,7 @@ function App() {
   return (
     <div className="app">
       <div className="chat-container">
+
         <header className="chat-header">
           <div>
             <h1>Likelion CAU Chatbot 🦁</h1>
@@ -106,11 +136,15 @@ function App() {
             <div
               key={index}
               className={`message-row ${
-                message.role === "user" ? "user-row" : "assistant-row"
+                message.role === "user"
+                  ? "user-row"
+                  : "assistant-row"
               }`}
             >
               {message.role === "assistant" && (
-                <div className="avatar">멋사AI</div>
+                <div className="avatar">
+                  멋사AI
+                </div>
               )}
 
               <div
@@ -127,7 +161,9 @@ function App() {
 
           {loading && (
             <div className="message-row assistant-row">
-              <div className="avatar">AI</div>
+              <div className="avatar">
+                멋사AI
+              </div>
 
               <div className="message assistant-message loading-message">
                 <span />
@@ -141,7 +177,9 @@ function App() {
         <div className="chat-input-area">
           <textarea
             value={input}
-            onChange={(e) => setInput(e.target.value)}
+            onChange={(e) =>
+              setInput(e.target.value)
+            }
             onKeyDown={handleKeyDown}
             placeholder="메시지를 입력하세요..."
             rows={1}
@@ -151,7 +189,7 @@ function App() {
             onClick={sendMessage}
             disabled={!input.trim() || loading}
           >
-            보내기
+            {loading ? "전송 중..." : "보내기"}
           </button>
         </div>
       </div>
