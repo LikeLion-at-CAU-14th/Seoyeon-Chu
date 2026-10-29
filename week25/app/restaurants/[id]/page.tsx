@@ -1,21 +1,24 @@
-import LikeButton from "@/components/LikeButton";
-import { restaurants } from "@/data/retaurants";
 import Link from "next/link";
+import { restaurants } from "@/data/restaurants";
+import LikeButton from "@/components/LikeButton";
+import { notFound } from "next/navigation";
+
+export const instant = false;
 
 export default async function RestaurantDetailPage({
-    params,
+  params,
 }: {
-    params: Promise<{ id: string }>
+  params: Promise<{ id: string }>;
 }) {
-    const {id} = await params;
-    const restaurant = restaurants.find((item) => item.id === Number(id));
+  const { id } = await params;
+  const restaurant = restaurants.find((item) => item.id === Number(id));
 
-    if (!restaurant) {
-        return <p>존재하지 않는 맛집입니다.</p>;
-    }
+  if (!restaurant) {
+    notFound();
+  }
 
-    return (
-        <div className="flex flex-col gap-4 rounded-2xl bg-white p-8 shadow-sm">
+  return (
+    <div className="flex flex-col gap-4 rounded-2xl bg-white p-8 shadow-sm">
       <span className="text-6xl">{restaurant.emoji}</span>
       <h1 className="text-3xl font-bold">{restaurant.name}</h1>
       <p className="text-gray-500">{restaurant.category}</p>
@@ -28,5 +31,5 @@ export default async function RestaurantDetailPage({
         목록으로 돌아가기
       </Link>
     </div>
-    )
+  );
 }

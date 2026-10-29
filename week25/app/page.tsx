@@ -14,6 +14,12 @@ export default function HomePage() {
       >
         맛집 보러 가기
       </Link>
+      <Link
+          href="/random"
+          className="rounded-full border border-orange-500 px-6 py-3 font-bold text-orange-500 hover:bg-orange-500 hover:text-white"
+        >
+          🎲 랜덤 맛집
+        </Link>
     </div>
   );
 }
