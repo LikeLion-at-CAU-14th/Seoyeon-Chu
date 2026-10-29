@@ -46,8 +46,6 @@ HTML | CSS | Python | React | C++ | Maya
 
 ## 📫 Contact
 
-- Email: [smonstacy@cau.ac.kr](mailto:smonstacy@cau.ac.kr)
-- Instagram: [@cn_tjdus](https://www.instagram.com/cn_tjdus/)
 - GitHub: [@cntjdus](https://github.com/cntjdus)
 
 ## 🐾 Git Animals
