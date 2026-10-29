@@ -1,0 +1,17 @@
+{
+  "app": {
+    "[project]/app/movies/[id]/page": [
+      "static/media/147b931d04cd1a05-s.p.2j6r2-1n2f5sb.woff2",
+      "static/media/7fc9c92292d32c4a-s.p.0ljf6knlnfjjl.woff2"
+    ],
+    "[project]/app/movies/page": [
+      "static/media/147b931d04cd1a05-s.p.2j6r2-1n2f5sb.woff2"
+    ],
+    "[project]/app/page": [
+      "static/media/147b931d04cd1a05-s.p.2j6r2-1n2f5sb.woff2"
+    ]
+  },
+  "appUsingSizeAdjust": true,
+  "pages": {},
+  "pagesUsingSizeAdjust": false
+}

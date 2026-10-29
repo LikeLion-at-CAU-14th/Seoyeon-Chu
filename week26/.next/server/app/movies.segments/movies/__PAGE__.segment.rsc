@@ -1,0 +1,30 @@
+1:"$Sreact.fragment"
+2:"/_next/static/chunks/0umf92h1sb77c.js"
+3:I[39756,["$2"],"default"]
+4:I[37457,["$2"],"default"]
+b:"/_next/static/chunks/1-ng1xtih7qlz.js"
+c:I[5500,["$2","$b"],"Image"]
+d:I[22016,["$2","$b"],""]
+e:I[97367,["$2"],"OutletBoundary"]
+f:"$Sreact.suspense"
+12:"ViewportBoundary"
+13:I[97367,["$2"],"$12"]
+14:"MetadataBoundary"
+15:I[97367,["$2"],"$14"]
+16:I[27201,["$2"],"IconMark"]
+:HL["/_next/static/chunks/44zsjq5c0nr-a.css","style"]
+6:X
+9:X
+9:C
+a:[["children",{"s":"__PAGE__","h":160,"d":{"r":["$","$1","c",{"children":[["$","main",null,{"children":[["$","h1",null,{"children":"영화 목록"}],["$","div",null,{"className":"movie-grid","children":[["$","article","1",{"className":"movie-card","children":[["$","$Lc",null,{"src":"/posters/eternal sunshine.jpg","alt":"이터널 선샤인","width":250,"height":360}],["$","div",null,{"className":"movie-info","children":[["$","h3",null,{"children":"이터널 선샤인"}],["$","p",null,{"children":[2004," · ","로맨스, SF"]}],["$","$Ld",null,{"href":"/movies/1","children":"상세 정보"}]]}]]}],["$","article","2",{"className":"movie-card","children":[["$","$Lc",null,{"src":"/posters/kill bill.jpg","alt":"킬 빌","width":250,"height":360}],["$","div",null,{"className":"movie-info","children":[["$","h3",null,{"children":"킬 빌"}],["$","p",null,{"children":[2003," · ","액션"]}],["$","$Ld",null,{"href":"/movies/2","children":"상세 정보"}]]}]]}],["$","article","3",{"className":"movie-card","children":[["$","$Lc",null,{"src":"/posters/sentimental value.jpg","alt":"센티멘탈 밸류","width":250,"height":360}],["$","div",null,{"className":"movie-info","children":[["$","h3",null,{"children":"센티멘탈 밸류"}],["$","p",null,{"children":[2025," · ","드라마"]}],["$","$Ld",null,{"href":"/movies/3","children":"상세 정보"}]]}]]}],["$","article","4",{"className":"movie-card","children":[["$","$Lc",null,{"src":"/posters/chungking express.jpg","alt":"중경상림","width":250,"height":360}],["$","div",null,{"className":"movie-info","children":[["$","h3",null,{"children":"중경상림"}],["$","p",null,{"children":[1994," · ","로맨스, 드라마"]}],["$","$Ld",null,{"href":"/movies/4","children":"상세 정보"}]]}]]}],["$","article","5",{"className":"movie-card","children":[["$","$Lc",null,{"src":"/posters/dune.jpg","alt":"듄","width":250,"height":360}],["$","div",null,{"className":"movie-info","children":[["$","h3",null,{"children":"듄"}],["$","p",null,{"children":[2021," · ","SF"]}],["$","$Ld",null,{"href":"/movies/5","children":"상세 정보"}]]}]]}],["$","article","6",{"className":"movie-card","children":[["$","$Lc",null,{"src":"/posters/matrix.jpg","alt":"매트릭스","width":250,"height":360}],["$","div",null,{"className":"movie-info","children":[["$","h3",null,{"children":"매트릭스"}],["$","p",null,{"children":[1999," · ","SF, 액션"]}],["$","$Ld",null,{"href":"/movies/6","children":"상세 정보"}]]}]]}]]}]]}],[["$","script","script-0",{"src":"/_next/static/chunks/1-ng1xtih7qlz.js","async":true}]],["$","$Le",null,{"children":["$","$f",null,{"name":"Next.MetadataOutlet","children":"$@10"}]}]]}],"p":"$@11","v":null,"s":"$6"}}]]
+7:[["children",{"s":"movies","h":96,"d":{"r":["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","template":["$","$L4",null,{}]}]]}],"p":"$@8","v":"$9","s":"$6"},"c":"$Qa"}]]
+0:{"t":{"t":{"s":"","h":80,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/44zsjq5c0nr-a.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/0umf92h1sb77c.js","async":true}]],["$","html",null,{"lang":"ko","children":["$","body",null,{"className":"v-bVia_className","children":[["$","header",null,{"children":[["$","a",null,{"href":"/","children":"🎬영화 아카이브"}],["$","a",null,{"href":"/movies","children":"영화 목록"}]]}],["$","$L3",null,{"parallelRouterKey":"children","template":["$","$L4",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]]}]]}]}]]}],"p":"$@5","v":null,"s":"$6"},"c":"$Q7"},"h":{"r":["$","$1","h",{"children":[null,["$","$L13",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L15",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$f",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"영화 아카이브"}],["$","meta","1",{"name":"description","content":"Next.js 영화 아카이브 실습"}],["$","link","2",{"rel":"icon","href":"/favicon.ico?favicon.117ezoe8m31dk.ico","sizes":"48x48","type":"image/x-icon"}],["$","$L16","3",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@17","v":null,"s":"$6"}},"a":"$@18","u":"$@19","b":"y1m3H0NKGlggTfNhez5XZ"}
+10:null
+6:300
+19:true
+6:C
+18:0
+8:"$undefined"
+5:"$undefined"
+17:"$undefined"
+11:"$undefined"
