@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { albums } from "@/data/albums";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -12,7 +13,14 @@ export default function Home() {
         {albums.map((album) => (
           <li key={album.id}>
             <Link href={`/albums/${album.id}`} className="album-card">
-              <img src={album.cover} className="album-cover" />
+              <Image
+                src={album.cover}
+                alt={`${album.artist} - ${album.title} 앨범 표지`}
+                width={600}
+                height={600}
+                className="album-cover"
+              />
+              {/* 과제: 앨범 제목과 아티스트 이름을 div 대신 알맞은 시맨틱 태그로 바꾸기 */}
               <div className="album-title">{album.title}</div>
               <div className="album-artist">{album.artist}</div>
             </Link>
