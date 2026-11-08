@@ -18,6 +18,9 @@ export default function Home() {
                 alt={`${album.artist} - ${album.title} 앨범 표지`}
                 width={600}
                 height={600}
+                sizes="(max-width: 768px) 100vw, 420px"
+                loading="eager"
+                fetchPriority="high"
                 className="album-cover"
               />
               {/* 과제: 앨범 제목과 아티스트 이름을 div 대신 알맞은 시맨틱 태그로 바꾸기 */}
