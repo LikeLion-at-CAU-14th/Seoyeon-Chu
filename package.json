@@ -1,0 +1,6 @@
+{
+  "devDependencies": {
+    "@emnapi/core": "^2.0.0-beta.2",
+    "@emnapi/runtime": "^2.0.0-beta.2"
+  }
+}
